@@ -30,7 +30,7 @@ Arquivos:
 
 Arquivos:
 - `lista_ligada.c`
-
+- `lista_ligada_dupla.c`
 ## Decisões de implementação
 - As listas foram implementadas sem uso de bibliotecas externas
 - A alocação de memória é feita manualmente com `malloc` e `free`
@@ -46,3 +46,6 @@ gcc array_basico.c -o array_basico
 
 gcc lista_ligada.c -o lista_ligada
 ./lista_ligada
+
+gcc lista_ligada_dupla.c -o lista_ligada_dupla
+./lista_ligada_dupla
