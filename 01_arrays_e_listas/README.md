@@ -18,8 +18,16 @@ das estruturas de dados.
 - Percurso e manipulação
 - Limitações de tamanho
 
+Caracteristicas:
+- Tamanho fixo(definido na hora da criação)
+- Homogêneo(elementos do mesmo tipo)
+- Acesso direto(por meio de índice 0..n)
+- Alocação contígua
+- Podem ser unidimensionais ou multidimensionais
+
 Arquivos:
 - `array_basico.c`
+- `jogo_da_velha.c`
 
 ### 2. Listas Ligadas
 - Estrutura de nó (`struct`)
@@ -43,6 +51,9 @@ Exemplo usando `gcc`:
 ```bash
 gcc array_basico.c -o array_basico
 ./array_basico
+
+gcc jogo_da_velha.c -o jogo_da_velha
+./jogo_da_velha
 
 gcc lista_ligada.c -o lista_ligada
 ./lista_ligada

@@ -4,7 +4,6 @@
 int main(void){
     
     int *array = NULL;
-    
     int array_size;
     
     printf("Quantos números inteiros o array deve conter: ");
@@ -31,7 +30,6 @@ int main(void){
     for(int i = array_size-1; i >= 0; i--){
         printf("array[%d]: %d\n",i, array[i]);
     }
-
     //free array memory
     free(array);
     array = NULL;
