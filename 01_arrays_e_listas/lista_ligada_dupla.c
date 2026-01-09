@@ -10,14 +10,17 @@ typedef struct node {
 
 void add(node **head, int value);
 void rmv(node **head, int value);
-void find(node **head, int value);
+node* find(node *head, int value);
 void show_reverse(node *head);
 void show(node *head);
 
 void add(node **head, int value) {
 	node *new_node = malloc(sizeof(node));
 
-	if(!new_node) return;
+	if(!new_node){
+        printf("add(%d): erro na alocação de memória\n", value);
+        return;
+    }
 	
 	new_node->value = value;
 	new_node->next = NULL;
@@ -25,6 +28,7 @@ void add(node **head, int value) {
 	
 	if(*head == NULL) {
 		*head = new_node;
+        printf("add(%d): valor inserido\n", value);
 		return;
 	}
 
@@ -36,6 +40,7 @@ void add(node **head, int value) {
 	}
 	new_node->prev = current;	
 	current->next = new_node;
+    printf("add(%d): valor inserido\n", value);
 }
 
 void show_reverse(node *head) {
@@ -57,13 +62,51 @@ void show_reverse(node *head) {
 void show(node *head) {
 	printf("List content\n");
 	
-	if(head == NULL) return;
+	if(head == NULL) {
+        puts("[vazia]");
+        return;
+    }
 
 	while(head->next != NULL) {
 		printf("%d\n", head->value);
 		head = head->next; 
 	}
 	printf("%d\n", head->value);
+}
+
+node* find(node *head, int value) {
+    node *result;
+    result = head;
+
+    while(result != NULL && result->value != value) {
+        result = result->next;
+    }
+    return result;
+}
+
+void rmv(node **head, int value) {
+    node *target = find(*head, value);
+    if(!target) {
+        printf("rmv(%d): valor não encontrado\n", value);
+        return;
+    }
+    node *prev = target->prev;
+    node *next = target->next;
+
+    if(target == *head) {
+        *head = next;
+    }
+
+    if(prev) {
+        prev->next = next;
+    }
+
+    if(next) {
+        next->prev = prev;
+    }
+
+    free(target);
+    printf("rmv(%d): valor removido\n", value);
 }
 
 int main(void) {
@@ -74,5 +117,23 @@ int main(void) {
 	add(&head, 50);
 	show(head);
 	show_reverse(head);
+
+    node *result = find(head, 20);
+    if(result) puts("find(20): encontrado"); else puts("find(20): não encontrado");
+
+    result = find(head, 42);
+    if(result) puts("find(42): encontrado"); else puts("find(42): não encontrado");
+
+    rmv(&head, 42);
+    add(&head, 42);
+    show(head);
+    rmv(&head, 42);
+    show(head);
+    rmv(&head, 10);
+    rmv(&head, 20);
+    rmv(&head, 30);
+    rmv(&head, 50);
+    rmv(&head, 42);
+    show(head);
 }
 
