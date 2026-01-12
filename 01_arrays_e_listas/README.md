@@ -39,6 +39,8 @@ Arquivos:
 Arquivos:
 - `lista_ligada.c`
 - `lista_ligada_dupla.c`
+- `jogo_da_velha.c`
+
 ## Decisões de implementação
 - As listas foram implementadas sem uso de bibliotecas externas
 - A alocação de memória é feita manualmente com `malloc` e `free`
@@ -52,11 +54,11 @@ Exemplo usando `gcc`:
 gcc array_basico.c -o array_basico
 ./array_basico
 
-gcc jogo_da_velha.c -o jogo_da_velha
-./jogo_da_velha
-
 gcc lista_ligada.c -o lista_ligada
 ./lista_ligada
 
 gcc lista_ligada_dupla.c -o lista_ligada_dupla
 ./lista_ligada_dupla
+
+gcc jogo_da_velha.c -o jogo_da_velha
+./jogo_da_velha
